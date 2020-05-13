@@ -1,6 +1,6 @@
 import express from 'express';
 
-const mountRoutes = (app: express.Application) => {
+const routes = (app: express.Application) => {
   const apiRouter = express.Router();
   apiRouter.get('/me', (req, res) => {
     return res.json({ data: 'response' });
@@ -9,4 +9,4 @@ const mountRoutes = (app: express.Application) => {
   app.use('/api', apiRouter);
 };
 
-export default mountRoutes;
+export default routes;

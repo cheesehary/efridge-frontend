@@ -3,4 +3,5 @@ WORKDIR /app/budget-service
 COPY package.json .
 COPY yarn.lock .
 RUN yarn
-ENTRYPOINT [ "yarn", "dev" ]
+COPY ./script/entrypoint.sh /
+CMD [ "/entrypoint.sh" ]

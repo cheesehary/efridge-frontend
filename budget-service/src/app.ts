@@ -1,20 +1,19 @@
 import express from 'express';
 import 'reflect-metadata';
 import dotenv from 'dotenv';
-import mountRoutes from './config/routes';
+import { createConnection } from 'typeorm';
+import routes from './config/routes';
+import cors from './config/cors';
 
 dotenv.config();
 
+createConnection()
+  .then(() => console.log(`db connected`))
+  .catch((err) => console.log(err));
+
 const app = express();
 
-app.use((req, res, next) => {
-  res.set({
-    'Access-Control-Allow-Origin': process.env.APP_URL,
-    'Access-Control-Allow-Credentials': true,
-  });
-  next();
-});
-
-mountRoutes(app);
+cors(app);
+routes(app);
 
 export default app;
