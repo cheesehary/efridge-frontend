@@ -4,5 +4,8 @@ node_modules
 # frontend
 frontend/dist
 
+# budget-service
+budget-service/dist
+
 # docker
 docker/volumes/mysql/data

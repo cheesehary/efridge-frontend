@@ -31,7 +31,7 @@ services:
       - db
     volumes:
       - ./budget-service:/app/budget-service
-      - ./docker/volumes/budget-service/.env:/app/budget-service/.env
+      # - ./docker/volumes/budget-service/.env:/app/budget-service/.env
       - /app/budget-service/node_modules
 
   db:

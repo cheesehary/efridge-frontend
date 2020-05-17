@@ -10,7 +10,8 @@
     "forceConsistentCasingInFileNames": true,
     "module": "commonjs",
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
+    "emitDecoratorMetadata": true,
+    "outDir": "dist"
   },
   "include": ["src"]
 }
