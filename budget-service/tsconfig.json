@@ -6,7 +6,7 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "noImplicitAny": true,
+    // "noImplicitAny": true,
     "forceConsistentCasingInFileNames": true,
     "module": "commonjs",
     "experimentalDecorators": true,

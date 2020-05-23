@@ -4,10 +4,27 @@ import api from './api';
 
 const App = () => {
   const [response, setResponse] = useState('');
-  useEffect(() => {
-    api.get('/me').then((res) => setResponse(res.data));
-  }, []);
-  return <div className={style.title}>Hello {response}!!</div>;
+  const createUser = () => {
+    api
+      .graphql({
+        query: `
+      mutation CreateUser($user: UserInput!) {
+        upsertUser(user: $user) {
+          id
+          firstName
+          lastName
+        }
+      }
+      `,
+        variables: { user: { firstName: 'test', lastName: 'graphql' } },
+      })
+      .then((res) => setResponse(res.data));
+  };
+  return (
+    <div className={style.title} onClick={createUser}>
+      Hello there!!
+    </div>
+  );
 };
 
 export default App;
