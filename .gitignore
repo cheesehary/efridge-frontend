@@ -3,9 +3,11 @@ node_modules
 
 # frontend
 frontend/dist
+frontend/.env
 
 # budget-service
 budget-service/dist
+budget-service/.env
 
 # docker
 docker/volumes/mysql/data

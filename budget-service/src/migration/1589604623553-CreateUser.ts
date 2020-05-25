@@ -23,6 +23,11 @@ export class CreateUser1589604623553 implements MigrationInterface {
             type: 'varchar',
             length: '36',
           },
+          {
+            name: 'googleId',
+            type: 'varchar',
+            length: '36',
+          },
         ],
       }),
       true

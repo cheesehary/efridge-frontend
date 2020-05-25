@@ -1,6 +1,7 @@
-#TODO increase sleeping time for db initialization
-sleep 10
+# db initialization
+sleep 20
 
+# db migration
 yarn typeorm migration:run
 
 # start server

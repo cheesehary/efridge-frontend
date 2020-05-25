@@ -12,7 +12,7 @@ const ajax = {
   //     throw new Error(`http error, status ${response.status}`);
   //   });
   // },
-  graphql: (query: Query): Promise<any> => {
+  graphql: (query: IQuery): Promise<any> => {
     return fetch(process.env.SERVICE_URL + '/graphql', {
       method: 'POST',
       credentials: 'include',
@@ -27,7 +27,7 @@ const ajax = {
   },
 };
 
-interface Query {
+interface IQuery {
   query: string;
   operationName?: string;
   variables?: { [key: string]: any };

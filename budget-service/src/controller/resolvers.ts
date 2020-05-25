@@ -1,6 +1,6 @@
 import { saveUser } from '../service/UserService';
 
-export const resolvers = {
+export default {
   Query: {
     user(obj, args, context) {},
   },
