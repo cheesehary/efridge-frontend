@@ -4,13 +4,12 @@ schema {
 }
 
 type Query {
-  user(id: ID!): User!
+  user: User!
   profile: Profile!
 }
 
 type Mutation {
-  upsertProfile: Profile!
-  upsertUser(user: UserInput!): User!
+  updateProfile: Profile!
 }
 
 type User {

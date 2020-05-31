@@ -12,16 +12,17 @@ const ajax = {
   //     throw new Error(`http error, status ${response.status}`);
   //   });
   // },
-  graphql: (query: IQuery): Promise<any> => {
+  graphql: (query: IQuery | string): Promise<any> => {
     return fetch(process.env.SERVICE_URL + '/graphql', {
       method: 'POST',
       credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(query),
+      body: JSON.stringify(typeof query === 'string' ? { query } : query),
     }).then((response) => {
       if (response.ok) return response.json();
+      if (response.status === 401) return (window.location.href = '/');
       throw new Error(`http error, status ${response.status}`);
     });
   },

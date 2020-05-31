@@ -14,6 +14,11 @@ export class CreateProfile1589673532811 implements MigrationInterface {
             generationStrategy: 'uuid',
           },
           {
+            name: 'userId',
+            type: 'varchar',
+            length: '36',
+          },
+          {
             name: 'income',
             type: 'int',
             default: 0,

@@ -12,6 +12,7 @@ module.exports = merge(common, {
     port: 8080,
     disableHostCheck: true,
     host: '0.0.0.0',
+    historyApiFallback: true,
   },
   plugins: [
     new CleanWebpackPlugin(),

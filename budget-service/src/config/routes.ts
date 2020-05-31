@@ -1,27 +1,23 @@
-import express, { Request, Response, NextFunction } from 'express';
+import express from 'express';
 import fs from 'fs';
 import path from 'path';
 import graphqlHTTP from 'express-graphql';
 import { makeExecutableSchema } from 'graphql-tools';
 import resolvers from '../controller/resolvers';
-import { login } from '../controller/controllers';
+import { login, errorHandler } from '../controller/controllers';
+import auth from '../middleware/auth';
 
 const executableSchema = makeExecutableSchema({
-  typeDefs: fs.readFileSync(
-    path.resolve(__dirname, './schema.graphql'),
-    'utf8'
-  ),
+  typeDefs: fs.readFileSync(path.resolve(__dirname, 'schema.graphql'), 'utf8'),
   resolvers,
 });
 
 const routes = (app: express.Application) => {
-  app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-    console.error('default error, ', err);
-    return res.status(500).json({ message: 'server error' });
-  });
+  app.use(errorHandler);
   app.get('/auth', login);
   app.use(
     '/graphql',
+    auth,
     graphqlHTTP({
       schema: executableSchema,
       graphiql: true,

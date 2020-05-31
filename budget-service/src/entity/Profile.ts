@@ -6,6 +6,9 @@ export class Profile {
   id: string;
 
   @Column()
+  userId: string;
+
+  @Column()
   income: number;
 
   @Column()

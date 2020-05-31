@@ -13,9 +13,25 @@ export const exchangeCodeForToken = async (code: string): Promise<IToken> => {
     const token = jwt.decode(response.data.id_token) as IToken;
     return token;
   } catch (e) {
-    console.error(e.response.data);
+    console.error('exchange failed: ', e.response.data);
     throw e;
   }
+};
+
+export const createTokenFromUser = (user: IUser): string => {
+  return jwt.sign({}, process.env.JWT_SECRET, {
+    expiresIn: '1h',
+    subject: user.id,
+  });
+};
+
+export const verifyToken = (token: string): IClaims => {
+  return jwt.verify(token, process.env.JWT_SECRET) as IClaims;
+};
+
+export const extractExpiryFromToken = (token: string): number => {
+  const jwtToken = jwt.decode(token) as IClaims;
+  return jwtToken.exp;
 };
 
 interface IToken {
@@ -23,4 +39,13 @@ interface IToken {
   email: string;
   family_name: string;
   given_name: string;
+}
+
+interface IUser {
+  id: string;
+}
+
+interface IClaims {
+  sub: string;
+  exp: number;
 }
