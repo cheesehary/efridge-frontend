@@ -9,7 +9,7 @@ const LoginPage: React.FC<any> = ({ history }) => {
   }, []);
   return (
     <div>
-      <div onClick={login}>Sign in with Google</div>
+      <button onClick={login}>Sign in with Google</button>
     </div>
   );
 };
@@ -21,6 +21,6 @@ const login = () => {
     process.env.GOOGLE_CLIENT_ID as string
   )}&redirect_uri=${
     process.env.GOOGLE_REDIRECT_URI
-  }&response_type=code&scope=https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile openid`;
+  }&response_type=code&scope=https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile openid&prompt=select_account`;
   window.location.href = url;
 };

@@ -5,6 +5,7 @@ module.exports = {
   output: {
     filename: '[contenthash].bundle.js',
     path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],

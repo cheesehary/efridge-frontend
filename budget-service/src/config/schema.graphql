@@ -6,10 +6,16 @@ schema {
 type Query {
   user: User!
   profile: Profile!
+  finance(year: Int!, month: Int!): Finance
+  expense(year: Int!, month: Int!): [Expense]!
+  balance: Int!
 }
 
 type Mutation {
-  updateProfile: Profile!
+  updateProfile(profile: ProfileInput): Profile!
+  createOrUpdateFinance(finance: FinanceInput!): Finance!
+  createOrUpdateExpense(expense: ExpenseInput!): Expense!
+  deleteExpense(id: ID!): ID!
 }
 
 type User {
@@ -22,11 +28,44 @@ type Profile {
   id: ID!
   income: Int!
   savingsGoal: Int!
-  balance: Int!
+}
+
+type Finance {
+  id: ID!
+  income: Int!
+  year: Int!
+  month: Int!
+}
+
+type Expense {
+  id: ID!
+  amount: Int!
+  tag: String
+  category: String!
 }
 
 input UserInput {
   id: ID
   firstName: String
   lastName: String
+}
+
+input ProfileInput {
+  income: Int
+  savingsGoal: Int
+}
+
+input FinanceInput {
+  id: ID
+  income: Int!
+  year: Int!
+  month: Int!
+}
+
+input ExpenseInput {
+  id: ID
+  financeId: ID
+  amount: Int!
+  tag: String
+  category: String!
 }

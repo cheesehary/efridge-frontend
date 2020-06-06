@@ -1,9 +1,11 @@
 import { combineReducers, createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import user from '../reducer/user';
+import finance from '../reducer/finance';
 
 const reducer = combineReducers({
   user,
+  finance,
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

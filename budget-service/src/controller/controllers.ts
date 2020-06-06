@@ -5,7 +5,7 @@ import {
   createTokenFromUser,
   extractExpiryFromToken,
 } from '../service/AuthService';
-import { createUserAndProfile, findOneUser } from '../service/UserService';
+import { createUserAndProfile, findUser } from '../service/UserService';
 
 const _login = async (req: Request, res: Response) => {
   const error = req.query.error;
@@ -15,7 +15,7 @@ const _login = async (req: Request, res: Response) => {
     return res.end();
   }
   const token = await exchangeCodeForToken(code);
-  let user = await findOneUser({ googleId: token.sub });
+  let user = await findUser({ googleId: token.sub });
   if (!user) {
     user = await createUserAndProfile({
       firstName: token.given_name,

@@ -13,7 +13,4 @@ export class Profile {
 
   @Column()
   savingsGoal: number;
-
-  @Column()
-  balance: number;
 }

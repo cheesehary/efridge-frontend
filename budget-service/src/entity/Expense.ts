@@ -9,6 +9,9 @@ export class Expense {
   financeId: string;
 
   @Column()
+  userId: string;
+
+  @Column()
   amount: number;
 
   @Column()

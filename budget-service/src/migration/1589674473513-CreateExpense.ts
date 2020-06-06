@@ -19,6 +19,11 @@ export class CreateExpense1589674473513 implements MigrationInterface {
             length: '36',
           },
           {
+            name: 'userId',
+            type: 'varchar',
+            length: '36',
+          },
+          {
             name: 'amount',
             type: 'int',
           },

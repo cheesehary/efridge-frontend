@@ -28,11 +28,6 @@ export class CreateProfile1589673532811 implements MigrationInterface {
             type: 'int',
             default: 0,
           },
-          {
-            name: 'balance',
-            type: 'int',
-            default: 0,
-          },
         ],
       }),
       true

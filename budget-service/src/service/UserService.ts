@@ -2,13 +2,7 @@ import { getManager } from 'typeorm';
 import { User } from '../entity/User';
 import { Profile } from '../entity/Profile';
 
-export const saveUser = (payload: IUser) => {
-  const manager = getManager();
-  const userObj = manager.create(User, payload);
-  return manager.save(userObj);
-};
-
-export const findOneUser = (payload: object) => {
+export const findUser = (payload: object) => {
   const manager = getManager();
   return manager.findOne(User, payload);
 };
@@ -28,9 +22,20 @@ export const createUserAndProfile = async (payload: IUser) => {
   });
 };
 
+export const updateProfile = async (userId: string, payload: IProfile) => {
+  const manager = getManager();
+  await manager.update(Profile, { userId }, payload);
+  return manager.findOne(Profile, { userId });
+};
+
 interface IUser {
   id?: string;
   firstName: string;
   lastName: string;
   googleId: string;
+}
+
+interface IProfile {
+  income: number;
+  savingsGoal: number;
 }

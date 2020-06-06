@@ -1,9 +1,6 @@
 const initialState = {
   id: '',
   firstName: '',
-  income: 0,
-  savingsGoal: 0,
-  balance: 0,
 };
 
 export default (state = initialState, { type, payload }: any) => {
