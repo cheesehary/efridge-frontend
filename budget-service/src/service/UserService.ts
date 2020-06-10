@@ -16,6 +16,7 @@ export const createUserAndProfile = async (payload: IUser) => {
   return await getManager().transaction(async (manager) => {
     const userObj = manager.create(User, payload);
     const user = await manager.save(userObj);
+    // @ts-ignore
     const profileObj = manager.create(Profile, { userId: user.id });
     await manager.save(profileObj);
     return user;

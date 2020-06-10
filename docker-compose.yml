@@ -17,6 +17,7 @@ services:
       - "9999:9999"
     volumes:
       - ./frontend:/app/frontend
+      - ./frontend/.env.dev:/app/frontend/.env
       - /app/frontend/node_modules
 
   budget-service:
@@ -31,6 +32,7 @@ services:
       - db
     volumes:
       - ./budget-service:/app/budget-service
+      - ./budget-service/.env.dev:/app/budget-service/.env
       # - ./docker/volumes/budget-service/.env:/app/budget-service/.env
       - /app/budget-service/node_modules
 
