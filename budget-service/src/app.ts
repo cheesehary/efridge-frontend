@@ -8,8 +8,6 @@ import cookieParser from 'cookie-parser';
 
 dotenv.config();
 
-console.log('db host: ', process.env.TYPEORM_HOST);
-
 db();
 
 const app = express();
