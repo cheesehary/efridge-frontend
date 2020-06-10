@@ -4,7 +4,7 @@
   "description": "react + typescript",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack",
+    "build": "webpack --config webpack.prod.js",
     "serve": "npm-run-all -p _scss _serve",
     "_serve": "webpack-dev-server",
     "_scss": "tsm src --watch"
