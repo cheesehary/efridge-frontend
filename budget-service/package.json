@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "nodejs + graphql + mysql",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Error: no test specified\" && exit 0",
     "dev": "nodemon src/index.ts",
-    "start": "tsc && node dist/index.js",
+    "start": "node dist/index.js",
+    "build": "tsc",
     "typeorm": "node --require ./node_modules/ts-node/register ./node_modules/typeorm/cli.js"
   },
   "prettier": {

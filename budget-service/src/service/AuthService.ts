@@ -18,7 +18,7 @@ export const exchangeCodeForToken = async (code: string): Promise<IToken> => {
   }
 };
 
-export const createTokenFromUser = (user: IUser): string => {
+export const createTokenFromUser = (user: any): string => {
   return jwt.sign({}, process.env.JWT_SECRET, {
     expiresIn: '1h',
     subject: user.id,
