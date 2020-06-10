@@ -1,7 +1,6 @@
 #!/bin/sh
 if [ "$TRAVIS_TEST_RESULT" = 0 ]
 then
-  ls -al frontend
   sudo pip install --upgrade pip;
   pip --version;
   pip install awscli --upgrade --user;

@@ -16,11 +16,6 @@ RUN apk --no-cache add nginx
 
 COPY --from=frontend-builder /tmp/frontend/dist /app/frontend
 COPY --from=budget-builder /tmp/budget-service/dist /tmp/budget-service/node_modules /tmp/budget-service/.env /tmp/budget-service/package.json /tmp/budget-service/schema.graphql /tmp/budget-service/yarn.lock ./
-# COPY --from=budget-builder /tmp/budget-service/node_modules /app/budget-service/node_modules
-# COPY --from=budget-builder /tmp/budget-service/.env /app/budget-service/.env
-# COPY --from=budget-builder /tmp/budget-service/package.json /app/budget-service/package.json
-# COPY --from=budget-builder /tmp/budget-service/schema.graphql /app/budget-service/schema.graphql
-# COPY --from=budget-builder /tmp/budget-service/yarn.lock /app/budget-service/yarn.lock
 COPY --from=budget-builder /tmp/budget-service/script/nginx.prod.conf /etc/nginx/nginx.conf
 COPY --from=budget-builder /tmp/budget-service/script/entrypoint.prod.sh /
 
