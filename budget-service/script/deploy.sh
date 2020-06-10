@@ -9,7 +9,7 @@ then
   echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin;
   docker build -f budget-service/Dockerfile.prod -t "$DOCKER_REPO:latest" .;
   docker push "$DOCKER_REPO:latest";
-  aws ecs update-service --cluster money-pot --service app-service --force-new-deployment;
+  # aws ecs update-service --cluster money-pot --service app-service --force-new-deployment;
 else
   echo "Test failed";
 fi
