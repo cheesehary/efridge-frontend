@@ -1,0 +1,17 @@
+sudo: required
+language: node_js
+node_js: lts/*
+services:
+  - docker
+branches:
+  only:
+    - master
+before_script: yarn build
+deploy:
+  provider: script
+  script: bash budget-service/script/deploy.sh
+  on:
+    branch: master
+env:
+  global:
+    - AWS_DEFAULT_REGION=ap-southeast-2

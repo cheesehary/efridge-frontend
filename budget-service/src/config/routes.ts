@@ -8,7 +8,10 @@ import { login, errorHandler } from '../controller/controllers';
 import auth from '../middleware/auth';
 
 const executableSchema = makeExecutableSchema({
-  typeDefs: fs.readFileSync(path.resolve(__dirname, 'schema.graphql'), 'utf8'),
+  typeDefs: fs.readFileSync(
+    path.resolve(__dirname, '../../schema.graphql'),
+    'utf8'
+  ),
   resolvers,
 });
 
