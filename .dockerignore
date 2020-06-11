@@ -2,3 +2,4 @@ frontend/dist
 frontend/node_modules
 
 budget-service/dist
+budget-service/node_modules

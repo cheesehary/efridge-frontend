@@ -1,24 +1,27 @@
 FROM node:lts-alpine AS frontend-builder
-WORKDIR /app/frontend
+WORKDIR /tmp/frontend
 COPY frontend .
+RUN ls -al
 RUN yarn && yarn build
 
 FROM node:lts-alpine AS budget-builder
-WORKDIR /app/budget-service
+WORKDIR /tmp/budget-service
 COPY budget-service .
+RUN ls -al
 RUN yarn && yarn build
 
 FROM node:lts-alpine
 WORKDIR /app/budget-service
 RUN apk --no-cache add nginx
 
-COPY --from=frontend-builder /app/frontend/dist /app/frontend
-COPY --from=budget-builder /app/budget-service/dist /app/budget-service/dist
-COPY --from=budget-builder /app/budget-service/node_modules /app/budget-service/node_modules
-COPY --from=budget-builder /app/budget-service/.env /app/budget-service/.env
-COPY --from=budget-builder /app/budget-service/package.json /app/budget-service/package.json
-COPY --from=budget-builder /app/budget-service/schema.graphql /app/budget-service/schema.graphql
-COPY --from=budget-builder /app/budget-service/script/nginx.prod.conf /etc/nginx/nginx.conf
-COPY --from=budget-builder /app/budget-service/script/entrypoint.prod.sh /
+COPY --from=frontend-builder /tmp/frontend/dist /app/frontend
+COPY --from=budget-builder /tmp/budget-service/dist /app/budget-service/dist
+COPY --from=budget-builder /tmp/budget-service/node_modules /app/budget-service/node_modules
+COPY --from=budget-builder /tmp/budget-service/.env /app/budget-service/.env
+COPY --from=budget-builder /tmp/budget-service/package.json /app/budget-service/package.json
+COPY --from=budget-builder /tmp/budget-service/schema.graphql /app/budget-service/schema.graphql
+COPY --from=budget-builder /tmp/budget-service/yarn.lock /app/budget-service/yarn.lock
+COPY --from=budget-builder /tmp/budget-service/script/nginx.prod.conf /etc/nginx/nginx.conf
+COPY --from=budget-builder /tmp/budget-service/script/entrypoint.prod.sh /
 
 CMD [ "/entrypoint.prod.sh" ]

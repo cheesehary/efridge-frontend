@@ -1,4 +1,3 @@
-sudo: required
 language: node_js
 node_js: lts/*
 services:
@@ -6,12 +5,19 @@ services:
 branches:
   only:
     - master
+before_install:
+  - openssl aes-256-cbc -K $encrypted_3c84dcdc6bbe_key -iv $encrypted_3c84dcdc6bbe_iv
+    -in budget-service/.env.enc -out budget-service/.env -d
+  - openssl aes-256-cbc -K $encrypted_e51ccb9a6155_key -iv $encrypted_e51ccb9a6155_iv
+    -in frontend/.env.enc -out frontend/.env -d
+  - cd budget-service
+install: yarn
 before_script: yarn build
+script: yarn test
+before_deploy: cd ..
 deploy:
   provider: script
   script: bash budget-service/script/deploy.sh
+  skip_cleanup: true
   on:
     branch: master
-env:
-  global:
-    - AWS_DEFAULT_REGION=ap-southeast-2
