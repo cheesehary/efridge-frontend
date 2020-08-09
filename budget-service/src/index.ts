@@ -1,10 +1,13 @@
 import app from './app';
+import db from './config/db';
 
-app.listen(process.env.PORT, () => {
-  console.log(`
-  ---------------
-  Server Started
-
-  Port: ${process.env.PORT}
-  `);
+db().then(() => {
+  app.listen(process.env.PORT, () => {
+    console.log(`
+    ---------------
+    Server Started
+  
+    Port: ${process.env.PORT}
+    `);
+  });
 });

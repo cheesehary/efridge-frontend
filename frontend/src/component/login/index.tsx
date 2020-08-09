@@ -1,5 +1,8 @@
 import React, { useEffect } from 'react';
 import { getCookie } from '../../util';
+import Button from '@material-ui/core/Button';
+import style from './style.module.scss';
+import IMG_GOOGLE from '../../asset/google_logo.webp';
 
 const LoginPage: React.FC<any> = ({ history }) => {
   useEffect(() => {
@@ -8,8 +11,16 @@ const LoginPage: React.FC<any> = ({ history }) => {
     }
   }, []);
   return (
-    <div>
-      <button onClick={login}>Sign in with Google</button>
+    <div className={style.login}>
+      <Button onClick={login}>
+        <img
+          className={style.googleIcon}
+          width="20px"
+          alt="Google sign-in"
+          src={IMG_GOOGLE}
+        />
+        Sign in with Google
+      </Button>
     </div>
   );
 };

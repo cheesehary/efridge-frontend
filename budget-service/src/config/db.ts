@@ -2,7 +2,7 @@ import { createConnection } from 'typeorm';
 
 export default () => {
   // @ts-ignore
-  createConnection({
+  return createConnection({
     type: process.env.TYPEORM_CONNECTION,
     host: process.env.TYPEORM_HOST,
     port: process.env.TYPEORM_PORT,

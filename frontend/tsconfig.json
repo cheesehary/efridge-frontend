@@ -11,5 +11,6 @@
     "module": "commonjs",
     "jsx": "react"
   },
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": ["src/**/*.test.ts"]
 }
