@@ -12,8 +12,8 @@ before_install:
     -in frontend/.env.enc -out frontend/.env -d
   - cd budget-service
 install: yarn
-before_script: yarn build
-script: yarn test
+before_script: yarn test
+script: yarn build
 before_deploy: cd ..
 deploy:
   provider: script
