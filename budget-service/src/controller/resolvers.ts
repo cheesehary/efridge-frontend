@@ -17,7 +17,6 @@ import {
 export default {
   Query: {
     user(obj, args, { userId }) {
-      console.log('userId: ', userId);
       return findUser({ id: userId });
     },
     profile(obj, args, { userId }) {
