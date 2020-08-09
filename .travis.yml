@@ -16,7 +16,7 @@ install:
   - cd ../budget-service
   - yarn
 before_script:
-  - cd frontend
+  - cd ../frontend
   - yarn test
   - cd ../budget-service
   - yarn test
