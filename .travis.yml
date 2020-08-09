@@ -10,7 +10,11 @@ before_install:
     -in budget-service/.env.enc -out budget-service/.env -d
   - openssl aes-256-cbc -K $encrypted_e51ccb9a6155_key -iv $encrypted_e51ccb9a6155_iv
     -in frontend/.env.enc -out frontend/.env -d
-install: yarn
+install:
+  - cd frontend
+  - yarn
+  - cd ../budget-service
+  - yarn
 before_script:
   - cd frontend
   - yarn test
