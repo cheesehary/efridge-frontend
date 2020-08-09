@@ -37,7 +37,7 @@ describe('/graphql user operations', () => {
           `,
         })
       );
-    expect(res.status).toBe(500);
+    expect(res.status).toBe(200);
     expect(res.body.data.user.firstName).toBe('first');
     expect(res.body.data.profile.income).toBe(4000);
     expect(res.body.data.profile.savingsGoal).toBe(1000);
