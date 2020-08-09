@@ -10,6 +10,7 @@ frontend/.env.dev
 budget-service/dist
 budget-service/.env
 budget-service/.env.dev
+budget-service/budget_testing
 
 # docker
 docker/volumes/mysql/data

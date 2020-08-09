@@ -1,14 +1,11 @@
 import express from 'express';
 import 'reflect-metadata';
 import dotenv from 'dotenv';
-import db from './config/db';
 import routes from './config/routes';
 import cors from './config/cors';
 import cookieParser from 'cookie-parser';
 
 dotenv.config();
-
-db();
 
 const app = express();
 
