@@ -4,17 +4,23 @@ module.exports = {
   entry: path.resolve(__dirname, 'src/index.tsx'),
   output: {
     filename: '[contenthash].bundle.js',
+    chunkFilename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],
   },
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+    },
+  },
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
-        use: 'ts-loader',
+        test: /\.(jsx?|tsx?)$/,
+        use: 'babel-loader',
         exclude: /node_modules/,
       },
       {

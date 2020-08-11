@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import loadable from '@loadable/component';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
