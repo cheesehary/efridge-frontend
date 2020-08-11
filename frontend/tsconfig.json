@@ -9,7 +9,8 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "module": "commonjs",
-    "jsx": "react"
+    "jsx": "react",
+    "types": ["node", "jest"]
   },
   "include": ["src"]
 }

@@ -1,7 +1,49 @@
+body {
+  margin: 0;
+}
 .login {
   height: 100vh;
   background-color: white;
 }
 .googleIcon {
   margin-right: 10px;
+}
+.bg {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+.content {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #f1f1f1;
+  padding: 10px;
+}
+.googleLabel {
+  color: #f1f1f1;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+.title {
+  font-size: 22px;
+  font-style: italic;
+  padding-left: 10%;
+  > span {
+    display: inline-block;
+    height: 1px;
+    width: 100px;
+    background-color: #f1f1f1;
+    position: relative;
+    top: -6px;
+  }
+}
+.btnArea {
+  padding-right: 15%;
+  display: flex;
+  justify-content: flex-end;
 }

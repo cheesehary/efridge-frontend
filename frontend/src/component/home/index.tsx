@@ -65,7 +65,7 @@ const HomePage: React.FC<any> = ({
   };
   return (
     <div>
-      <div onClick={gotoProfile}>Profile, {firstName}</div>
+      <button onClick={gotoProfile}>Profile, {firstName}</button>
       <div>Balance: {balance}</div>
       {renderFinance()}
       {renderCreateFinanceDialog()}

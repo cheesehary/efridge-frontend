@@ -33,6 +33,7 @@ describe('/graphql user operations', () => {
                 income
                 savingsGoal
               }
+              balance
             }
           `,
         })
@@ -41,5 +42,6 @@ describe('/graphql user operations', () => {
     expect(res.body.data.user.firstName).toBe('first');
     expect(res.body.data.profile.income).toBe(4000);
     expect(res.body.data.profile.savingsGoal).toBe(1000);
+    expect(res.body.data.balance).toBe(0);
   });
 });

@@ -47,7 +47,8 @@ export const deleteExpense = (id: string) => {
 export const calculateBalance = async (userId: string) => {
   const manager = getManager();
   const rawIncome = await manager.query(
-    `SELECT COUNT(*) AS months, SUM(income) AS income FROM finance WHERE userId='${userId}';`
+    `SELECT COUNT(*) AS months, SUM(income) AS income FROM finance WHERE userId=?;`,
+    [userId]
   );
   if (!rawIncome[0].income) {
     return 0;
@@ -56,7 +57,8 @@ export const calculateBalance = async (userId: string) => {
   const months = rawIncome[0].months;
   const profile = await manager.findOne(Profile, { userId });
   const rawSpending = await manager.query(
-    `SELECT SUM(amount) AS spending FROM expense WHERE userId='${userId}';`
+    `SELECT SUM(amount) AS spending FROM expense WHERE userId=?;`,
+    [userId]
   );
   const spending = rawSpending[0].spending || 0;
   return income - spending - months * profile.savingsGoal;
