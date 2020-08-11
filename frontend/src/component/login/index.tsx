@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { getCookie } from '../../util';
 import Button from '@material-ui/core/Button';
 import style from './style.module.scss';
-import IMG_GOOGLE from '../../asset/google_logo.webp';
+import IMG_GOOGLE from '../../asset/google_logo.png';
 
 const LoginPage: React.FC<any> = ({ history }) => {
   useEffect(() => {

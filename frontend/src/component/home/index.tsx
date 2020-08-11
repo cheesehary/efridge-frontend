@@ -5,6 +5,7 @@ import {
   createOrUpdateFinance,
 } from '../../action/finance';
 import ExpenseTable from '../ExpenseTable';
+import UnderConstruction from '../UnderContruction';
 
 const HomePage: React.FC<any> = ({
   firstName,
@@ -65,6 +66,7 @@ const HomePage: React.FC<any> = ({
   };
   return (
     <div>
+      <UnderConstruction />
       <button onClick={gotoProfile}>Profile, {firstName}</button>
       <div>Balance: {balance}</div>
       {renderFinance()}
